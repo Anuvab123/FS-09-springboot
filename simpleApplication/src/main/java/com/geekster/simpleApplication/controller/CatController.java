@@ -1,5 +1,7 @@
 package com.geekster.simpleApplication.controller;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +17,11 @@ public class CatController {
 
     @PostMapping(value="/cat")
     public String saveCat(@RequestBody String requestData){
-        System.out.println(requestData);
+        JSONObject jsonObject=new JSONObject(requestData);
+        String name=jsonObject.getString("name");
+        String username=jsonObject.getString("username");
+        String phno=jsonObject.getString("phn-no");
+        System.out.println(name+" "+username+" "+phno);
         return "data saved";
     }
 
